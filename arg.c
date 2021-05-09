@@ -3,8 +3,10 @@
 #include <string.h>
 
 
-void controlematriz(int);
+void controlematriz(int, int, int);
 //void setmatriz (char *, char[][10]);
+int clinha (char**);
+//int ccoluna (char*);
 
 int main (int argc, char * argv[])
 {	
@@ -13,6 +15,24 @@ int main (int argc, char * argv[])
 	char s[3];
 	//char basem[10][10];
 	//char** p;
+	//int lin = 0;
+	//int col = 0;
+	
+char matriz1[7][7] = {"******\0",		//7x7
+					  "*aDDb*\0",
+					  "*aDDb*\0",
+					  "*cdde*\0",
+					  "*cghe*\0",
+					  "*f  i*\0",
+					  "**xx**\0"};
+
+char matriz2[7][9] = {"********\0",		//7x8
+					  "*DD aab*\0",
+					  "*DD acd*\0",
+					  "*eefgdd*\0",
+					  "*hhijklx\0",
+					  "*hiimklx\0",
+					  "********\0"};
 	
 	
 	while(--argc>0){													//apuração dos parametros
@@ -47,14 +67,34 @@ int main (int argc, char * argv[])
 			}
 	}
 	
-	controlematriz(padrao);
+	if (padrao == 1){
+	for (int i=0; i < 7; i++){
+		for (int j=0; j< 7; j++){
+			printf ("%2c",matriz1[i][j]);
+		}
+		printf ("\n");
+	}
+	
+	printf ("\n");
+	}
+	else if (padrao == 0){
+		for (int i=0; i < 7; i++){
+			for (int j=0; j< 8; j++){
+				printf ("%2c",matriz2[i][j]);
+			}
+			printf ("\n");
+		}
+	}	
+	
+	//controlematriz(padrao, lin, col);
+	
 	
 }
 
 
-void controlematriz (int p){
+void controlematriz (int p, int l, int c){
 
-char matriz1[][7] =  {"******\n",
+/*char matriz1[][7] ={"******\n",
 					  "*aDDb*\n",
 					  "*aDDb*\n",
 					  "*cdde*\n",
@@ -68,12 +108,14 @@ char matriz2[][9] = {"********\n",
 					  "*eefgdd*\n",
 					  "*hhijkl \n",
 					  "*hiimkl \n",
-					  "********\n"};
+					  "********\n"};*/
 
 
 	if (p == 1){
 		printf("configuracao 1\n");
 		//setmatriz(matriz1,m);
+		//l = clinha(matriz1);
+		//c = ccoluna(matriz1);
 	}
 
 	
@@ -89,7 +131,23 @@ char matriz2[][9] = {"********\n",
 
 }
 
-/*void setmatriz(char * a, char *b){
+int clinha(char **m){
+int i;
+int r=0;
 	
+for (i = 0; *m[i] != '\0'; i++){
+	if (*m[i] == '\n'){
+	r++;
+	}
+}	
+return r;
+}
 
+/*int ccoluna(char **m){
+int i;
+	
+for (i = 0; m[i] != '\n'; i++){
+	}
+			
+return i;
 }*/
